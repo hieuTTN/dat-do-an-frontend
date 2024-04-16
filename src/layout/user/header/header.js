@@ -31,7 +31,7 @@ function header (){
                     <li><a href="/trung-tam-bao-hanh">Trung tâm bảo hành</a></li>
                     <li><a href="/he-thong-cua-hang">Địa chỉ cửa hàng</a></li>
                     <li><a href="/order/check">Tra cứu đơn hàng</a></li>
-                    <li><a id="login-modal" href="">Đăng nhập</a></li>
+                    <li><a id="login-modal" href="/login">Đăng nhập</a></li>
                 </ul>
             </div>
         </div>
@@ -39,7 +39,7 @@ function header (){
             <div class="headertop">
                 <div class="row">
                     <div class="col-sm-3">
-                        <img src={logo} class="logoheader" />
+                        <a href='/'><img src={logo} class="logoheader" /></a>
                     </div>
                     <div class="col-sm-6">
                         <div class="searchheader">

@@ -518,6 +518,74 @@ body{
     margin-top: 15px;
 }
 
+.tieudeindex{
+    display: block;
+    margin-top: 30px;
+    font-weight: bold;
+}
+.imgproductindex{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.singleproduct{
+    background-color: #fff;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+.contentprodiv{
+    padding: 10px;
+}
+.tenspindex{
+    -webkit-box-orient: vertical;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+    height: 60px;
+    position: relative;
+    text-decoration: none;
+    color: #000;
+}
+.giaspindex{
+    position: relative;
+}
+.giacuspindex{
+    position: absolute;
+    right: 0;
+    color: gray;
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    top: 5px;
+}
+.btngiohang{
+    appearance: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    line-height: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    width: 100%;
+    border: none;
+}
+.pagination{
+    margin-top: 30px;
+}
+.imgblogindex{
+    width: 100%;
+}
+
+
+
 @media screen and (min-width: 992px) {
     .col-lg-20p {
         width: 20%;
