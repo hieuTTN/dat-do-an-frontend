@@ -917,8 +917,40 @@ tr {
 #thanhcong p{
     margin-top: 15px;
 }
-
-
+.navleftacc,.navrightacc{
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 10px #ededed;
+        box-shadow: 0 0 10px #ededed;
+}
+.tabdv{
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.activetabdv{
+    background-color: #dedede;
+}
+.tongdondathang{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.huydon{
+    color: gray;
+    cursor: pointer;
+}
+.chitietdhic{
+    margin-left: 20px;
+    cursor: pointer;
+}
+.imgdetailhd{
+    width: 100px;
+}
+.lbacc{
+    margin-top: 10px;
+}
 
 
 

@@ -35,7 +35,7 @@ function Header (){
     var authen =  <li><a id="login-modal" href="/login">Đăng nhập</a></li>
     if(token != null){
         authen = <>
-        <li><a id="login-modal" href="taikhoan.html">Tài khoản</a></li>
+        <li><a id="login-modal" href="account">Tài khoản</a></li>
         <li onClick={()=>logout()}><a id="login-modal" href="#">Đăng xuất</a></li></>
     }
     return(
