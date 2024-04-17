@@ -5,7 +5,7 @@ import avatar from '../../assest/images/user.svg'
 import { useState, useEffect } from 'react'
 
 function Header({ children }){
-
+    checkAdmin();
     useEffect(()=>{
         getDateTime();
 

@@ -27,7 +27,7 @@ function PublicCheckOut(){
         <div class="contentmain">
         <div class="contentdtbg">
             <p class="titledtblog" id="title">{items==null?'':items.title}</p>
-            <div class="userblog">
+            <div>
                 <img src={items==null?'':avatar} class="avatardeblog"/>
                 <span class="">Biên tập bởi : <span id="userbldt">{items==null?'':items.user.fullname}</span></span>
                 <span class="timedtblog"><i class="fa fa-clock"></i> <span id="ngaydang">{items==null?'':items.createdDate}</span></span>

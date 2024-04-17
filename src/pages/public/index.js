@@ -1,13 +1,14 @@
-import Header from '../../layout/user/header/header'
 import Footer from '../../layout/user/footer/footer'
 import banner from '../../assest/images/banner.jpg'
 import banner1 from '../../assest/images/banner1.png'
 import banner2 from '../../assest/images/banner2.jpg'
-import {getMethod} from '../../services/request'
+import {getMethod,getMethodPostByToken,getMethodByToken} from '../../services/request'
 import {formatMoney} from '../../services/money'
 import { useState, useEffect } from 'react'
 import { Parser } from "html-to-react";
 import ReactPaginate from 'react-paginate';
+import {toast } from 'react-toastify';
+import headers  from '../../layout/user/header/header';
 
 
 var sizepro = 20
@@ -16,12 +17,13 @@ function Home(){
     const [itemProduct, setItemProduct] = useState([]);
     const [itemBlog, setItemBlog] = useState([]);
     const [pageCount, setpageCount] = useState(0);
+    const { header, updateHeader } = headers();
 
     useEffect(()=>{
       const getCate = async() =>{
           const result = await getMethod('http://localhost:8080/api/category/public/findAll');
           setItemCategories(result)
-      };
+      };getCate();
       const getBlog = async() =>{
           const result = await getMethod('http://localhost:8080/api/blog/public/findAll-list');
           setItemBlog(result)
@@ -47,6 +49,20 @@ function Home(){
       var currentPage = data.selected
       await fetchProduct(currentPage);
   }
+
+  const addToCart = async (id) => {
+    const result = await getMethodPostByToken('http://localhost:8080/api/cart/user/create?idproduct='+id);
+    if(result.status < 300){
+        toast.success("Thêm giỏ hàng thành công");
+        const response = await getMethodByToken('http://localhost:8080/api/cart/user/count-cart');
+        var numc = await response.text();
+        document.getElementById("soluongcart").innerHTML = numc
+    }
+    else{
+        toast.warning("Hãy đăng nhập");
+    }
+};
+
 
     return(
      <>
@@ -96,7 +112,7 @@ function Home(){
               <div className='contentprodiv'>
                 <a href={"detail?category="+item.id} className='tenspindex'>{item.name}</a>
                 <p className='tenspindex giaspindex'>{formatMoney(item.price)} <span className='giacuspindex'>{item.oldPrice == null?'':formatMoney(item.oldPrice)}</span> </p>
-                <button className='btngiohang'>Giỏ hàng</button>
+                <button onClick={()=>addToCart(item.id)} className='btngiohang'>Giỏ hàng</button>
               </div>
             </div>
           </div>
@@ -121,12 +137,14 @@ function Home(){
       <h5 className='tieudeindex'>BÀI VIẾT MỚI NHẤT</h5>
       <div class="col-sm-6">
           {itemBlog.map((item, index)=>{
-              return <div class="row">
+              return <div class="row singleblogindex">
                   <div className='col-sm-3'>
                     <img src={item.imageBanner} className='imgblogindex'/>
                   </div>
                   <div className='col-sm-9'>
-                    <a href="">{item.title}</a>
+                    <a href="" className='tieudebaivietindex'>{item.title}</a>
+                    <span className='motabaivietindex'>{item.description}</span>
+                    <span className='nguoidangblog'><i className='fa fa-user'></i> {item.user.username} - <i className='fa fa-calendar'></i> {item.createdDate}</span>
                   </div>
               </div>
           })}

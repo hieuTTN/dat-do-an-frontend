@@ -1,25 +1,42 @@
 import styles from './header.scss';
 import logo from '../../../assest/images/logo.png';
 import cart from '../../../assest/images/cartheader.png';
+import { useState, useEffect } from 'react'
+import {getMethod,getMethodByToken} from '../../../services/request'
+import React, { createContext, useContext } from 'react';
+
+export const HeaderContext = createContext();
 
 
-function logout(){
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    window.location.replace('/login')
-}
+function Header (){
+    var [numCart, setNumCart] = useState(0);
 
-function header (){
+    useEffect(()=>{
+        const getNumCart = async() =>{
+            const response = await getMethodByToken('http://localhost:8080/api/cart/user/count-cart');
+            if(response.status > 300){
+                setNumCart(0);
+                return;
+            }
+            var numc = await response.text();
+            setNumCart(numc);
+        };
+        getNumCart();
+    }, []);
+    
+
+    function logout(){
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        window.location.replace('login')
+    }
+
     var token = localStorage.getItem('token');
-    var authen = <a href="login" class="pointermenu gvs menulink"><i class="fa fa-user"></i> Đăng ký/ Đăng nhập</a>
+    var authen =  <li><a id="login-modal" href="/login">Đăng nhập</a></li>
     if(token != null){
-        authen = <span class="nav-item dropdown pointermenu gvs menulink">
-                    <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user"></i> Tài khoản</span>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="account">Tài khoản</a></li>
-                        <li onClick={()=>logout()}><a class="dropdown-item" href="#">Đăng xuất</a></li>
-                    </ul>
-                </span>
+        authen = <>
+        <li><a id="login-modal" href="taikhoan.html">Tài khoản</a></li>
+        <li onClick={()=>logout()}><a id="login-modal" href="#">Đăng xuất</a></li></>
     }
     return(
         <div id="headerweb">
@@ -27,11 +44,11 @@ function header (){
             <div class="container subcontainerheader">
                 <ul>
                     <li><a href="/gioi-thieu-cong-ty">Giới thiệu</a></li>
-                    <li><a href="/san-pham-da-xem">Sản phẩm đã xem</a></li>
+                    <li><a href="/blog">Bài viết</a></li>
                     <li><a href="/trung-tam-bao-hanh">Trung tâm bảo hành</a></li>
                     <li><a href="/he-thong-cua-hang">Địa chỉ cửa hàng</a></li>
                     <li><a href="/order/check">Tra cứu đơn hàng</a></li>
-                    <li><a id="login-modal" href="/login">Đăng nhập</a></li>
+                    {authen}
                 </ul>
             </div>
         </div>
@@ -58,8 +75,8 @@ function header (){
                             <div class="col-5">
                                 <div class="shoppingcartheader">
                                     <div class="shopingcontentcart">
-                                        <a href=""><img src={cart} class="imgcartheader" /></a>
-                                        <span class="cart-total">0</span>
+                                        <a href="cart"><img src={cart} class="imgcartheader" /></a>
+                                        <span id='soluongcart' class="cart-total">{numCart}</span>
                                     </div>
                                 </div>
                             </div>
@@ -74,4 +91,4 @@ function header (){
     
 }
 
-export default header;
+export default Header;

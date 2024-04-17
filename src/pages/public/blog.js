@@ -14,7 +14,6 @@ var size = 6
 
 function PublicBlog(){
     const [items, setItems] = useState([]);
-    const [primaryBlog, setPrimaryBlog] = useState(null);
     const [pageCount, setpageCount] = useState(0);
     useEffect(()=>{
       const getBlog = async() =>{
@@ -25,11 +24,6 @@ function PublicBlog(){
           setpageCount(totalPage)
       };
       getBlog();
-      const getPriBlog = async() =>{
-          var result = await getMethod('http://localhost:8080/api/blog/public/findPrimaryBlog');
-          setPrimaryBlog(result)
-      };
-      getPriBlog();
   }, []);
 
   
@@ -44,18 +38,6 @@ function PublicBlog(){
 
     return(
         <div class="contentmain">
-        <div class="bannerblog">
-            <img src={primaryBlog==null?'':primaryBlog.imageBanner} id="bannerimgblog" class="bannerimgblog"/>
-            <div class="contentbanner">
-                <a href={primaryBlog==null?'':"blogdetail?id="+primaryBlog.id} id="hfef">
-                    <p class="htkny" id="titlebloghea">{primaryBlog==null?'':primaryBlog.title}</p>
-                </a>
-                <p id="desblogpri">{primaryBlog==null?'':primaryBlog.description}</p>
-                <p><span><i class="fa fa-clock"></i> <span id="ngaydangb">{primaryBlog==null?'':primaryBlog.createdDate}</span></span>
-                </p>
-                <a href={primaryBlog==null?'':"blogdetail?id="+primaryBlog.id} id="btndocngay" class="btn btn-warning btndathang text-white">Đọc ngay</a>
-            </div>
-        </div>
         <div id="listblog" class="row">
         {items.map((item, index)=>{
             return <div class="col-lg-4 col-md-6 col-sm-12 col-12 singleblog">
@@ -65,8 +47,8 @@ function PublicBlog(){
                     </div>
                     <div class="col-7 cntblog">
                         <a href={"blogdetail?id="+item.id} class="titleblog">{item.title}</a>
-                        <a href={"blogdetail?id="+item.id}><span class="desbloglist">{item.description}</span></a>
-                        <div class="userblog">
+                        <span class="desbloglist">{item.description}</span>
+                        <div>
                             <img src={avatar} class="avtblog"/>
                             <span class="userdbg">{item.user.fullname}</span>
                             <span class="timeblog"><i class="fa fa-clock"></i> {item.createdDate}</span>

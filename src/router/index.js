@@ -23,6 +23,7 @@ import PublicForgot from '../pages/public/forgot'
 import PublicCheckOut from '../pages/public/checkout'
 import PublicPayment from '../pages/public/payment'
 import PublicAccount from '../pages/public/account'
+import PublicCart from '../pages/public/cart'
 
 const publicRoutes = [
     { path: "/", component: index},
@@ -36,6 +37,7 @@ const publicRoutes = [
     { path: "/checkout", component: PublicCheckOut, layout: layoutLogin},
     { path: "/payment", component: PublicPayment, layout: layoutLogin},
     { path: "/account", component: PublicAccount},
+    { path: "/cart", component: PublicCart},
 ];
 
 
