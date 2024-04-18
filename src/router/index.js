@@ -24,6 +24,8 @@ import PublicCheckOut from '../pages/public/checkout'
 import PublicPayment from '../pages/public/payment'
 import PublicAccount from '../pages/public/account'
 import PublicCart from '../pages/public/cart'
+import PublicDetailProduct from '../pages/public/detail'
+import PublicProduct from '../pages/public/product'
 
 const publicRoutes = [
     { path: "/", component: index},
@@ -38,6 +40,8 @@ const publicRoutes = [
     { path: "/payment", component: PublicPayment, layout: layoutLogin},
     { path: "/account", component: PublicAccount},
     { path: "/cart", component: PublicCart},
+    { path: "/detail", component: PublicDetailProduct},
+    { path: "/product", component: PublicProduct},
 ];
 
 

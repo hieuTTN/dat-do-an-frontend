@@ -34,14 +34,16 @@ async function createInvoice() {
         document.getElementById("errormess").innerHTML = result.defaultMessage
     }
 
-    }
+}
 
-$( document ).ready(function() {
-    createInvoice();
-});
+    // $( document ).ready(function() {
+    //     createInvoice();
+    // });
 
 function PublicPayment(){
-
+    useEffect(()=>{
+        // createInvoice();
+    }, []);
 
     return(
         <div class="contentmain"><br/><br/><br/>

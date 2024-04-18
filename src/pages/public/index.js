@@ -8,7 +8,6 @@ import { useState, useEffect } from 'react'
 import { Parser } from "html-to-react";
 import ReactPaginate from 'react-paginate';
 import {toast } from 'react-toastify';
-import headers  from '../../layout/user/header/header';
 
 
 var sizepro = 20
@@ -17,7 +16,6 @@ function Home(){
     const [itemProduct, setItemProduct] = useState([]);
     const [itemBlog, setItemBlog] = useState([]);
     const [pageCount, setpageCount] = useState(0);
-    const { header, updateHeader } = headers();
 
     useEffect(()=>{
       const getCate = async() =>{
@@ -96,7 +94,7 @@ function Home(){
         {itemCategories.map((item, index)=>{
             return <div class="col-lg-10p col-md-3 col-sm-4 col-4">
                 <div class="singlecategory">
-                    <a href={"product?category="+item.id}><img src={item.image} class="imagecategory"/></a>
+                    <a href={"product?category="+item.id+"&catename="+item.name}><img src={item.image} class="imagecategory"/></a>
                 </div>
                 <a href={"product?category="+item.id} class="tendanhmucid">{item.name}</a>
             </div>
@@ -108,9 +106,9 @@ function Home(){
         {itemProduct.map((item, index)=>{
           return <div className='col-lg-2 col-md-4 col-sm-6 col-12'>
             <div className='singleproduct'>
-              <a href=''><img src={item.imageBanner} className='imgproductindex'/></a>
+              <a href={"detail?id="+item.id}><img src={item.imageBanner} className='imgproductindex'/></a>
               <div className='contentprodiv'>
-                <a href={"detail?category="+item.id} className='tenspindex'>{item.name}</a>
+                <a href={"detail?id="+item.id} className='tenspindex tenspid'>{item.name}</a>
                 <p className='tenspindex giaspindex'>{formatMoney(item.price)} <span className='giacuspindex'>{item.oldPrice == null?'':formatMoney(item.oldPrice)}</span> </p>
                 <button onClick={()=>addToCart(item.id)} className='btngiohang'>Giỏ hàng</button>
               </div>

@@ -26,6 +26,7 @@ function PublicBlog(){
       getBlog();
   }, []);
 
+  console.log(items);
   
   const handlePageClick = async (data)=>{
     var currentPage = data.selected
@@ -37,7 +38,7 @@ function PublicBlog(){
 }
 
     return(
-        <div class="contentmain">
+        <div className="contentmain">
         <div id="listblog" class="row">
         {items.map((item, index)=>{
             return <div class="col-lg-4 col-md-6 col-sm-12 col-12 singleblog">

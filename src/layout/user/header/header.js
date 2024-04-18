@@ -8,6 +8,7 @@ import React, { createContext, useContext } from 'react';
 export const HeaderContext = createContext();
 
 
+var token = localStorage.getItem("token");
 function Header (){
     var [numCart, setNumCart] = useState(0);
 
@@ -21,7 +22,9 @@ function Header (){
             var numc = await response.text();
             setNumCart(numc);
         };
-        getNumCart();
+        if(token != null){
+            getNumCart();
+        }
     }, []);
     
 
@@ -59,10 +62,10 @@ function Header (){
                         <a href='/'><img src={logo} class="logoheader" /></a>
                     </div>
                     <div class="col-sm-6">
-                        <div class="searchheader">
-                            <input placeholder="Hôm nay bạn cần tìm gì?" class="inputsearchheader" />
+                        <form action='product' class="searchheader">
+                            <input name='search' placeholder="Hôm nay bạn cần tìm gì?" class="inputsearchheader" />
                             <button class="btnsearchheader"><i class="fa fa-search"></i></button>
-                        </div>
+                        </form>
                     </div>
                     <div class="col-sm-3">
                         <div class="row">
