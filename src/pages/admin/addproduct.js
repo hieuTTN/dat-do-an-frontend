@@ -35,6 +35,7 @@ async function saveProduct(event) {
             "name": event.target.elements.tensp.value,
             "imageBanner": linkbanner,
             "price": event.target.elements.price.value,
+            "expiry": event.target.elements.expiry.value,
             "oldPrice": event.target.elements.oldPrice.value,
             "description": description,
             "category": {
@@ -144,6 +145,8 @@ const AdminAddProduct = ()=>{
                                 <input name="price" defaultValue={product==null?'':product.price} class="form-control"/>
                                 <label class="lb-form">Giá tiền cũ</label>
                                 <input name="oldPrice" defaultValue={product==null?'':product.oldPrice} class="form-control"/>
+                                <label class="lb-form">Hạn sử dụng</label>
+                                <input name="expiry" defaultValue={product==null?'':product.expiry} class="form-control"/>
                                 <label class="lb-form">Danh mục</label>
                                 <select name="danhmuc" class="form-control">
                                     {itemDanhmuc.map((item=>{

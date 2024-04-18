@@ -10,10 +10,25 @@ import { getMethodByToken ,getMethodPostByToken,getMethodDeleteByToken,getMethod
 import {handleChangePass} from '../../services/auth';
 import { toast } from 'react-toastify'
 
+
+async function checkUser(){
+    var token = localStorage.getItem("token");
+    var url = 'http://localhost:8080/api/user/check-role-user';
+    const response = await fetch(url, {
+        headers: new Headers({
+            'Authorization': 'Bearer ' + token
+        })
+    });
+    if (response.status > 300) {
+        window.location.replace('/login')
+    }
+}
+
 function PublicAccount(){
     const [items, setItems] = useState([]);
     const [itemDetail, setItemDetail] = useState([]);
     useEffect(()=>{
+        checkUser();
         const getInvoice = async() =>{
             var response = await getMethodByToken('http://localhost:8080/api/invoice/user/find-by-user')
             var list = await response.json();

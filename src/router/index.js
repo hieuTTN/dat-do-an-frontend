@@ -27,6 +27,7 @@ import PublicAccount from '../pages/public/account'
 import PublicCart from '../pages/public/cart'
 import PublicDetailProduct from '../pages/public/detail'
 import PublicProduct from '../pages/public/product'
+import PublicKiemTraDon from '../pages/public/kiemtradon'
 
 const publicRoutes = [
     { path: "/", component: index},
@@ -43,6 +44,7 @@ const publicRoutes = [
     { path: "/cart", component: PublicCart},
     { path: "/detail", component: PublicDetailProduct},
     { path: "/product", component: PublicProduct},
+    { path: "/kiemtradonhang", component: PublicKiemTraDon},
 ];
 
 

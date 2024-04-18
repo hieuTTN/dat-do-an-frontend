@@ -571,6 +571,10 @@ body{
 .hidden{
     visibility: hidden;
 }
+.border-left-1{
+    border-left: .25rem solid #4e73df;
+}
+
 
 @media screen and (min-width: 992px) {
     .col-lg-20p {

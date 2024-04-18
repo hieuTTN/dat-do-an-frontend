@@ -179,7 +179,8 @@ const muaNgay = async () => {
                             <strong class="newpricestr" id="pricedetail">{product == null?'':formatMoney(product.price)}</strong>
                             <span class="oldpricestr" id="oldpricestr">{product == null?'':product.oldPrice == null?'':formatMoney(product.oldPrice)}</span>
                         </div>
-                        <span>Đã bán: {product == null?'':product.quantitySold} sản phẩm</span>
+                        <span>Đã bán: {product == null?'':product.quantitySold} sản phẩm</span><br/>
+                        <span>Hạn sử dụng: {product == null?'':product.expiry}</span>
                         <div className='divcamket'>
                             <h5 className='tieudecamket'>Tất cả sản phẩm chúng tôi bán ra đều cam kết</h5>
                             <span className='spcamket'><i className='fa fa-check'></i> Sản phẩm rõ nguồn gốc</span>

@@ -48,9 +48,8 @@ function Header (){
                 <ul>
                     <li><a href="/gioi-thieu-cong-ty">Giới thiệu</a></li>
                     <li><a href="/blog">Bài viết</a></li>
-                    <li><a href="/trung-tam-bao-hanh">Trung tâm bảo hành</a></li>
                     <li><a href="/he-thong-cua-hang">Địa chỉ cửa hàng</a></li>
-                    <li><a href="/order/check">Tra cứu đơn hàng</a></li>
+                    <li><a href="/account">Tra cứu đơn hàng</a></li>
                     {authen}
                 </ul>
             </div>
@@ -70,7 +69,7 @@ function Header (){
                     <div class="col-sm-3">
                         <div class="row">
                             <div class="col-7">
-                                <a class="btnkiemtradh" href="/order/check">
+                                <a class="btnkiemtradh" href="/kiemtradonhang">
                                     <span class="icon"><i class="fa fa-truck"></i></span>
                                     <span class="text">Kiểm tra đơn hàng</span>
                                 </a>

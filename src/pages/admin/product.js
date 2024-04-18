@@ -77,6 +77,7 @@ const AdminProduct = ()=>{
                                 <th>Tên sản phẩm</th>
                                 <th>Giá hiện tại</th>
                                 <th>Giá cũ</th>
+                                <th>Hạn sử dụng</th>
                                 <th>Số lượng bán</th>
                                 <th>Danh mục</th>
                                 <th class="sticky-col">Hành động</th>
@@ -90,6 +91,7 @@ const AdminProduct = ()=>{
                                     <td>{item.name}</td>
                                     <td>{formatMoney(item.price)}</td>
                                     <td>{formatMoney(item.oldPrice)}</td>
+                                    <td>{item.expiry}</td>
                                     <td>{item.quantitySold}</td>
                                     <td>{item.category.name}</td>
                                     <td class="sticky-col">
