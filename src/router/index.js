@@ -10,6 +10,7 @@ import AdminAddBlog from '../pages/admin/addblog'
 import AdminDoanhThu from '../pages/admin/doanhthu'
 import AdminProduct from '../pages/admin/product'
 import AdminAddProduct from '../pages/admin/addproduct'
+import AdminInvoice from '../pages/admin/invoice'
 
 
 //public
@@ -54,6 +55,7 @@ const adminRoutes = [
     { path: "/admin/doanhthu", component: AdminDoanhThu, layout: layoutAdmin },
     { path: "/admin/product", component: AdminProduct, layout: layoutAdmin },
     { path: "/admin/addproduct", component: AdminAddProduct, layout: layoutAdmin },
+    { path: "/admin/invoice", component: AdminInvoice, layout: layoutAdmin },
 ];
 
 

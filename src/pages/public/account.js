@@ -155,7 +155,7 @@ function PublicAccount(){
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Chi tiết đặt phòng</h5>
+                    <h5 class="modal-title">Chi tiết đơn hàng</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -182,7 +182,7 @@ function PublicAccount(){
                 </div>
             </div>
         </div>
-    </div>
+        </div>
     </div>
     );
 }

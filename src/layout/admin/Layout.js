@@ -79,13 +79,13 @@ function Header({ children }){
                 <h3>Quản trị</h3>
             </div>
             <div class="listmenumain">
-                <a href="index.html">Trang chủ</a>
+                <a href="index">Trang chủ</a>
                 <a href="user">Tài khoản</a>
                 <a href="category">Danh mục</a>
                 <a href="blog">Bài viết</a>
                 <a href="product">Sản phẩm</a>
-                <a href="">Đơn hàng</a>
-                <a href="">Nhập hàng</a>
+                <a href="invoice">Đơn hàng</a>
+                <a href="doanhthu">Doanh thu</a>
                 <a href="#" onClick={()=>logout()}>Đăng xuất</a>
             </div>
          </div>
