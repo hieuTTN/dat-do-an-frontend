@@ -85,6 +85,7 @@ function Header({ children }){
                 <a href="blog">Bài viết</a>
                 <a href="product">Sản phẩm</a>
                 <a href="invoice">Đơn hàng</a>
+                <a href="voucher">Voucher</a>
                 <a href="doanhthu">Doanh thu</a>
                 <a href="#" onClick={()=>logout()}>Đăng xuất</a>
             </div>

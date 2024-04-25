@@ -42,7 +42,7 @@ async function createInvoice() {
 
 function PublicPayment(){
     useEffect(()=>{
-        // createInvoice();
+        createInvoice();
     }, []);
 
     return(
