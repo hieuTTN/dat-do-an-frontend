@@ -13,6 +13,7 @@ function PublicCart(){
     const [numCart, setNumCart] = useState(0);
     const [totalAmount, setTotalAmount] = useState(0);
     const [user, setUser] = useState(null);
+    const [voucher, setVoucher] = useState(null);
     useEffect(()=>{
       const getCart = async() =>{
         initCart();
@@ -85,10 +86,12 @@ function PublicCart(){
             "phone": document.getElementById("phone").value,
             "address": document.getElementById("diachinhan").value,
             "note": document.getElementById("ghichudonhang").value,
+            "codeVoucher":voucher==null?null:voucher.code,
         }
         window.localStorage.setItem('orderinfor', JSON.stringify(orderDto));
         var returnurl = 'http://localhost:3000/payment';
         var paymentDto = {
+            "codeVoucher":voucher==null?null:voucher.code,
             "content": "Đặt đồ ăn",
             "returnUrl": returnurl,
             "notifyUrl": returnurl,
@@ -126,7 +129,29 @@ function PublicCart(){
         }
     }
     
+    async function loadVoucher() {
+        document.getElementById("tongtienthanhtoan").innerHTML = formatMoney(totalAmount);
 
+        var code = document.getElementById("codevoucher").value
+        var url = 'http://localhost:8080/api/voucher/public/findByCode?code=' + code + '&amount='+totalAmount;
+        const response = await fetch(url, {});
+        var result = await response.json();
+        if (response.status < 300) {
+            setVoucher(result)
+            document.getElementById("blockmessErr").style.display = 'none';
+            document.getElementById("blockmess").style.display = 'block';
+            document.getElementById("tongtienthanhtoan").innerHTML = formatMoney(totalAmount - result.discount);
+        }
+        else{
+            setVoucher(null)
+            if (response.status == 417) {
+                var mess = result.defaultMessage
+                document.getElementById("messerr").innerHTML = mess;
+                document.getElementById("blockmessErr").style.display = 'block';
+                document.getElementById("blockmess").style.display = 'none';
+            }
+        }
+    }
 
     return(
         <>
@@ -231,9 +256,30 @@ function PublicCart(){
                                     <td><i class="fa fa-money paycode"></i></td>
                                 </tr>
                             </table>
-
-                            <span class="titlecheckout">Tổng tiền phải thanh toán</span>
-                            <span className='tongtienthanhtoan'>{formatMoney(totalAmount)}</span>
+                            <div class="row magg">
+                                <div class="col-8"><input id="codevoucher" class="form-control" placeholder="Nhập mã giảm giá"/></div>
+                                <div class="col-4"><button onClick={()=>loadVoucher()} class="btnmagg">Áp dụng</button></div>
+                                <div class="col-12" id="blockmess">
+                                    <span class="successvou">Mã giảm giá đã được áp dụng</span>
+                                </div>
+                                <div class="col-12" id="blockmessErr">
+                                    <br/><i class="fa fa-warning"> <span id="messerr">Mã giảm giá không khả dụng</span></i>
+                                </div>
+                            </div>
+                            <table className='table table-borderless'>
+                                <tr>
+                                    <td><span class="titlecheckout">Tạm tính</span></td>
+                                    <td><span className='tongtienthanhtoan'>{formatMoney(totalAmount)}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="titlecheckout">Giảm giá</span></td>
+                                    <td><span className='tongtienthanhtoan' >{voucher == null?0: formatMoney(voucher.discount)}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="titlecheckout">Tổng tiền phải thanh toán</span></td>
+                                    <td><span className='tongtienthanhtoan' id='tongtienthanhtoan'>{formatMoney(totalAmount)}</span></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>

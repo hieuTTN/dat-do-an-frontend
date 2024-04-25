@@ -136,7 +136,7 @@ function PublicAccount(){
                                     <td>{item.note}</td>
                                     <td>{item.payType}</td>
                                     <td>{item.statusInvoice}</td>
-                                    <td>{formatMoney(item.totalAmount)}</td>
+                                    <td>{formatMoney(item.totalAmount)} {item.voucher == null?'':'-'+formatMoney(item.voucher.discount)}</td>
                                     <td>
                                     {(item.statusInvoice == "DANG_CHO_XAC_NHAN" || item.statusInvoice== "DA_XAC_NHAN") && item.payType == 'COD'?
                                     <i onClick={()=>cancelInvoice(item.id)} class="fa fa-trash huydon"></i>:''}

@@ -800,7 +800,6 @@ tr {
     font-weight: bold;
     font-size: 1.2rem;
     display: block;
-    margin-bottom: 20px;
 }
 .lbcheckout{
     font-weight: 500;
@@ -1280,6 +1279,27 @@ tr {
     outline: none;
     border: none;
     margin-top: 20px;
+}
+.btnmagg {
+    background-color: #fcaf17;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}
+#blockmess {
+    display: none;
+}
+.successvou {
+    color: green;
+    margin-top: 10px;
+    display: block;
+}
+#blockmessErr {
+    display: none;
+}
+#messerr {
+    color: red;
 }
 
 
