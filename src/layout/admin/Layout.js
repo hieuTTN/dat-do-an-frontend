@@ -85,8 +85,8 @@ function Header({ children }){
                 <a href="blog">Bài viết</a>
                 <a href="product">Sản phẩm</a>
                 <a href="invoice">Đơn hàng</a>
+                <a href="importproduct">Nhập hàng</a>
                 <a href="voucher">Voucher</a>
-                <a href="doanhthu">Doanh thu</a>
                 <a href="#" onClick={()=>logout()}>Đăng xuất</a>
             </div>
          </div>
@@ -104,7 +104,7 @@ function Header({ children }){
             <img src={avatar} class="userlogo"/>
         </a>
         <ul class="dropdown-menu listitemtk" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" onclick="dangXuat()" href="#"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+            <li><a class="dropdown-item" onClick={()=>logout()} href="#"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
         </ul>
     </div>
         </div>

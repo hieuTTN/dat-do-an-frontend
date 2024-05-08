@@ -155,6 +155,9 @@ const muaNgay = async () => {
     }
 };
 
+function changeImage(link){
+    document.getElementById("imgdetailpro").src = link
+}
 
     return(
         <>
@@ -167,9 +170,12 @@ const muaNgay = async () => {
                     <div class="col-sm-5">
                         <img id="imgdetailpro" src={product == null?'':product.imageBanner} class="imgprodetail"/>
                         <div class="listimgdetail row" id="listimgdetail">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2 singdimg">
+                        <img onClick={()=>changeImage(product == null?'':product.imageBanner)} src={product == null?'':product.imageBanner} className='imgldetail'/>
+                        </div>
                         {productImage.map((item, index)=>{
                             return <div class="col-lg-2 col-md-2 col-sm-2 col-2 singdimg">
-                                <img onclick="clickImgdetail(this)" src={item.linkImage} className={index != 0 ? 'imgldetail':'imgldetail imgactive'}/>
+                                <img onClick={()=>changeImage(item.linkImage)} src={item.linkImage} className={index != 0 ? 'imgldetail':'imgldetail'}/>
                             </div>
                         })}
                         </div>
@@ -201,7 +207,7 @@ const muaNgay = async () => {
                     <div id="descriptiondetail" dangerouslySetInnerHTML={{__html:product == null?'':product.description}}></div>
                 </div>
                 <div class="phanhoisanpham">
-                    <p class="titledes">Phản hổi</p>
+                    <p class="titledes">Phản hồi</p>
                     <div class="listcautlct" id="listcautlct">
                     {comments.map((item, index)=>{
                         return <div class="singlectlct">

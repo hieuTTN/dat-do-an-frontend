@@ -102,7 +102,13 @@ function PublicCart(){
             window.open(result.url, '_blank');
         }
         else{
-            toast.error("Momo đang gặp lỗi, không thể thanh toán");
+            if(res.status == 417){
+                var result = await res.json();
+                toast.error(result.defaultMessage);
+            }
+            else{
+                toast.error("Momo đang gặp lỗi, không thể thanh toán");
+            }
         }
     }
 
@@ -125,7 +131,13 @@ function PublicCart(){
             });
         }
         else{
-            toast.error("Đặt hàng thất bại");
+            if(res.status == 417){
+                var result = await res.json();
+                toast.error(result.defaultMessage);
+            }
+            else{
+                toast.error("Đặt hàng thất bại");
+            }
         }
     }
     

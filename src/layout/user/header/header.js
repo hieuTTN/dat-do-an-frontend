@@ -46,10 +46,9 @@ function Header (){
         <div class="subheader">
             <div class="container subcontainerheader">
                 <ul>
-                    <li><a href="/gioi-thieu-cong-ty">Giới thiệu</a></li>
                     <li><a href="/blog">Bài viết</a></li>
-                    <li><a href="/he-thong-cua-hang">Địa chỉ cửa hàng</a></li>
-                    <li><a href="/account">Tra cứu đơn hàng</a></li>
+                    <li><a href="">Địa chỉ cửa hàng</a></li>
+                    <li><a href="/kiemtradonhang">Tra cứu đơn hàng</a></li>
                     {authen}
                 </ul>
             </div>

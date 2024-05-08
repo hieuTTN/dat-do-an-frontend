@@ -13,6 +13,8 @@ import AdminAddProduct from '../pages/admin/addproduct'
 import AdminInvoice from '../pages/admin/invoice'
 import AdminVoucher from '../pages/admin/voucher'
 import AdminAddVoucher from '../pages/admin/addvoucher'
+import AdminImportProduct from '../pages/admin/importproduct'
+import AdminAddImportProduct from '../pages/admin/addimportproduct'
 
 
 //public
@@ -62,6 +64,8 @@ const adminRoutes = [
     { path: "/admin/invoice", component: AdminInvoice, layout: layoutAdmin },
     { path: "/admin/voucher", component: AdminVoucher, layout: layoutAdmin },
     { path: "/admin/addvoucher", component: AdminAddVoucher, layout: layoutAdmin },
+    { path: "/admin/importproduct", component: AdminImportProduct, layout: layoutAdmin },
+    { path: "/admin/addimportproduct", component: AdminAddImportProduct, layout: layoutAdmin },
 ];
 
 

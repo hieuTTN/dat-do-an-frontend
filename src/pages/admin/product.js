@@ -79,6 +79,7 @@ const AdminProduct = ()=>{
                                 <th>Giá cũ</th>
                                 <th>Hạn sử dụng</th>
                                 <th>Số lượng bán</th>
+                                <th>Số lượng còn</th>
                                 <th>Danh mục</th>
                                 <th class="sticky-col">Hành động</th>
                             </tr>
@@ -93,6 +94,7 @@ const AdminProduct = ()=>{
                                     <td>{formatMoney(item.oldPrice)}</td>
                                     <td>{item.expiry}</td>
                                     <td>{item.quantitySold}</td>
+                                    <td>{item.quantity}</td>
                                     <td>{item.category.name}</td>
                                     <td class="sticky-col">
                                         <i onClick={()=>deleteProduct(item.id)} class="fa fa-trash iconaction"></i>
